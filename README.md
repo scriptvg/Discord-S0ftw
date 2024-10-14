@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Esta **Aplicación de Punto de Venta (POS)** está diseñada para simplificar la gestión diaria de negocios. La primera versión está orientada al mercado de **Costa Rica**, con integración directa para la **facturación electrónica de Hacienda**. Nuestro objetivo es ofrecer una solución robusta y eficiente que facilite las operaciones comerciales. **Próximamente, expandiremos nuestra cobertura a nivel global**, permitiendo que negocios de todo el mundo aprovechen nuestras funcionalidades.
+Esta **(Punto de Venta POSOLUTION)** está diseñada para simplificar la gestión diaria de negocios y brindar la adaptibilidad para con el cliente. La primera versión está orientada al mercado de **Costa Rica**, con integración directa para la **facturación electrónica de Hacienda**. Nuestro objetivo es ofrecer una solución robusta y eficiente que facilite las operaciones comerciales. **Próximamente, expandiremos nuestra cobertura a nivel global**, permitiendo que negocios de todo el mundo aprovechen nuestras funcionalidades.
 
 ---
 
@@ -18,7 +18,7 @@ Esta **Aplicación de Punto de Venta (POS)** está diseñada para simplificar la
 
 ## Pronto en el Futuro
 
-- **Expansión Internacional:** Trabajamos para adaptar la aplicación a las normativas fiscales de diferentes países.
+- **Expansión Internacional:** Trabajamos para adaptar la aplicación a las normativas fiscales de diferentes países, sin embargo estaré enfocado en **Costa Rica** apartir de este punto se dedicará el desarrollo de forma global.
 - **Integración de Métodos de Pago Globales:** Soporte para diversas opciones de pago, incluyendo plataformas digitales.
 
 ---
@@ -39,7 +39,7 @@ Si estás interesado en colaborar, abre un **pull request** o crea un **issue** 
 
 Si valoras este proyecto y quieres apoyarlo, considera hacer una donación. Tu contribución ayudará a mejorar y expandir la aplicación, asegurando que pueda ser utilizada por más negocios en todo el mundo. 
 
-[Enlace a tu cuenta de donaciones (PayPal, Patreon, etc.)]
+[Implementando cuenta de donaciones (PayPal, Patreon, etc.)]
 
 ---
 
@@ -47,8 +47,8 @@ Si valoras este proyecto y quieres apoyarlo, considera hacer una donación. Tu c
 
 Para cualquier consulta, colaboración o interés en el proyecto, no dudes en contactarme:
 
-- **Correo electrónico:** tuemail@ejemplo.com
-- **LinkedIn:** [Tu perfil de LinkedIn](https://www.linkedin.com/in/tu-perfil)
+- **Correo electrónico:** krommximus@proton.me
+- **LinkedIn:**(https://www.linkedin.com/allan-josé-vélez-gonzález-2838981b8)
 
 ---
 
