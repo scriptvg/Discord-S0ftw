@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Esta **(Punto de Venta POSOLUTION)** está diseñada para simplificar la gestión diaria de negocios y brindar la adaptibilidad para con el cliente. La primera versión está orientada al mercado de **Costa Rica**, con integración directa para la **facturación electrónica de Hacienda**. Nuestro objetivo es ofrecer una solución robusta y eficiente que facilite las operaciones comerciales. **Próximamente, expandiremos nuestra cobertura a nivel global**, permitiendo que negocios de todo el mundo aprovechen nuestras funcionalidades.
+Este **(Punto de Venta POSOLUTION)** está diseñada para simplificar la gestión diaria de negocios y brindar la adaptibilidad para con el cliente. La primera versión está orientada al mercado de **Costa Rica**, con integración directa para la **facturación electrónica de Hacienda**. Nuestro objetivo es ofrecer una solución robusta y eficiente que facilite las operaciones comerciales. **Próximamente, expandiremos nuestra cobertura a nivel global**, permitiendo que negocios de todo el mundo aprovechen nuestras funcionalidades.
 
 ---
 
