@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este **(Punto de Venta POSOLUTION)** está diseñada para simplificar la gestión diaria de negocios y brindar la adaptibilidad para con el cliente. La primera versión está orientada al mercado de **Costa Rica**, con integración directa para la **facturación electrónica de Hacienda**. Nuestro objetivo es ofrecer una solución robusta y eficiente que facilite las operaciones comerciales. **Próximamente, expandiremos nuestra cobertura a nivel global**, permitiendo que negocios de todo el mundo aprovechen nuestras funcionalidades.
+Este **(Punto de Venta POSOLUTION)** está diseñada para simplificar la gestión diaria de negocios y brindar la adaptibilidad para con el cliente. La primera versión está orientada al mercado de **Costa Rica** con integración directa para la **facturación electrónica de Hacienda**. Nuestro objetivo es ofrecer una solución robusta y eficiente que facilite las operaciones comerciales. **Próximamente, expandiremos nuestra cobertura a nivel global**, permitiendo que negocios de todo el mundo aprovechen nuestras funcionalidades.
 
 ---
 
@@ -30,6 +30,7 @@ Estamos buscando colaboradores apasionados que deseen contribuir al desarrollo d
 1. **Desarrollo de Funcionalidades:** Ayuda a implementar nuevas características y mejoras.
 2. **Corrección de Errores:** Identifica y soluciona problemas para hacer la aplicación más robusta.
 3. **Documentación:** Mejora y amplía la documentación para facilitar el uso y la contribución.
+4. **PROBLEMAS:** Todavía no cuento con ninguna cédula jurídica de Costa Rica para probrar y finalizar correcciones en API dirigida para facturación en Costa Rica.
 
 Si estás interesado en colaborar, abre un **pull request** o crea un **issue** en este repositorio.
 
