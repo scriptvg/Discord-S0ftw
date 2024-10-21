@@ -1,0 +1,255 @@
+:root {
+    --background: #e0e5ec;
+    --text-color: #333;
+    --shadow-light: #ffffff;
+    --shadow-dark: #a3b1c6;
+    --accent-color: #4CAF50;
+    --accent-hover: #45a049;
+    --error-color: #f44336;
+    --success-color: #4CAF50;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    --s: 36px; /* control the size */
+    --c1: #000000;
+    --c2: #d2d3d5;
+    --c3: #727c7e;
+    --c4: #f1f1f1;
+
+    --g1: conic-gradient(at calc(250%/3) calc(50%/3),var(--c2) 60deg,transparent 0 300deg,var(--c1) 0);
+    --g2: conic-gradient(at calc(50%/3) 50%,transparent 75%,var(--c1) 0);
+    --g3: conic-gradient(at calc(100%/3) 50%,transparent 75%,var(--c2) 0);
+    --g4: conic-gradient(from 59deg at calc(200%/3) calc(249%/9),var(--c3) 61deg,transparent 62deg);
+    --g5: conic-gradient(from 60deg at 50% calc(250%/3),var(--c4) 60deg,var(--c1) 0 120deg,transparent 0);
+    
+    --_p: calc(9*tan(30deg)*var(--s));
+    background:
+        var(--g1) calc(-1*var(--s)) 0,var(--g1) calc(2*var(--s)) var(--_p),
+        var(--g2),var(--g2) calc(3*var(--s)) var(--_p),
+        var(--g3),var(--g3) calc(3*var(--s)) var(--_p),
+        var(--g4),var(--g4) calc(3*var(--s)) var(--_p),
+        var(--g5) calc(3*var(--s)) 0,var(--g5) 0 var(--_p) var(--c3);
+    background-size: calc(6*var(--s)) calc(2*var(--_p));
+    background-color: var(--background);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    background-color: rgba(224, 229, 236, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+    background-color: var(--background);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+}
+
+.tab {
+    padding: 12px 24px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    background-color: var(--background);
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+}
+
+.tab:hover, .tab.active {
+    box-shadow: 
+        inset 3px 3px 5px var(--shadow-dark),
+        inset -3px -3px 5px var(--shadow-light);
+    color: var(--accent-color);
+}
+
+.tab-content {
+    display: none;
+    background-color: var(--background);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.inventory-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.product-details, .product-list, .login-form, .form-container {
+    flex: 1 1 300px;
+    background-color: var(--background);
+    padding:  25px;
+    border-radius: 15px;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px;
+    background-color: var(--background);
+    border-radius: 10px;
+    box-shadow: 
+        3px 3px 5px var(--shadow-dark),
+        -3px -3px 5px var(--shadow-light);
+}
+
+th {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+tr:hover td {
+    box-shadow: 
+        inset 3px 3px 5px var(--shadow-dark),
+        inset -3px -3px 5px var(--shadow-light);
+}
+
+input[type="text"], input[type="number"], input[type="password"], input[type="email"], select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--background);
+    color: var(--text-color);
+    font-size: 16px;
+    box-shadow: 
+        inset 3px 3px 5px var(--shadow-dark),
+        inset -3px -3px 5px var(--shadow-light);
+}
+
+button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+        3px 3px 5px var(--shadow-dark),
+        -3px -3px 5px var(--shadow-light);
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+}
+
+button:active {
+    box-shadow: 
+        inset 3px 3px 5px var(--shadow-dark),
+        inset -3px -3px 5px var(--shadow-light);
+}
+
+.hidden {
+    display: none;
+}
+
+#userInfo {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.error {
+    color: var(--error-color);
+    margin-top: 5px;
+}
+
+.success {
+    color: var(--success-color);
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .tab {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    .product-details, .product-list, .login-form, .form-container {
+        flex: 1 1 100%;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}

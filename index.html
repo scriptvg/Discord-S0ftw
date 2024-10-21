@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema POS Avanzado con Facturación Electrónica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cash-register"></i> Sistema POS Avanzado</h1>
+        </header>
+        <div id="loginSection" class="login-form">
+            <h2><i class="fas fa-user-lock"></i> Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Usuario:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-key"></i> Contraseña:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-primary"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
+            </form>
+        </div>
+        <div id="mainContent" class="hidden">
+            <nav>
+                <div id="userInfo"></div>
+                <div class="tabs" id="tabsContainer"></div>
+            </nav>
+            <main id="tabContents">
+                <div id="inventory" class="tab-content">
+                    <h2>Inventario</h2>
+                    <div class="inventory-container">
+                        <div class="product-details">
+                            <h3>Detalles del Producto</h3>
+                            <form id="productForm">
+                                <div class="form-group">
+                                    <label for="productName">Nombre:</label>
+                                    <input type="text" id="productName" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productPrice">Precio:</label>
+                                    <input type="number" id="productPrice" name="price" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productStock">Stock:</label>
+                                    <input type="number" id="productStock" name="stock" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productCategory">Categoría:</label>
+                                    <input type="text" id="productCategory" name="category" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productBarcode">Código de Barras:</label>
+                                    <input type="text" id="productBarcode" name="barcode" required>
+                                </div>
+                                <button type="submit">Guardar Cambios</button>
+                            </form>
+                        </div>
+                        <div class="product-list">
+                            <h3>Lista de Productos</h3>
+                            <table id="productTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Stock</th>
+                                        <th>Categoría</th>
+                                        <th>Código de Barras</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Los productos se insertarán aquí dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="sales" class="tab-content">
+                    <h2>Ventas</h2>
+                    <div class="inventory-container">
+                        <div class="product-list">
+                            <h3>Productos Disponibles</h3>
+                            <table id="availableProductsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Stock</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Los productos se insertarán aquí dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="product-details">
+                            <h3>Carrito de Compras</h3>
+                            <table id="cartTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Los items del carrito se insertarán aquí dinámicamente -->
+                                </tbody>
+                            </table>
+                            <p>Total: ₡<span id="cartTotal">0.00</span></p>
+                            <button id="checkoutButton">Finalizar Compra</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="invoices" class="tab-content">
+                    <h2>Facturas</h2>
+                    <table id="invoicesTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Total</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Las facturas se insertarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="customers" class="tab-content">
+                    <h2>Clientes</h2>
+                    <div class="inventory-container">
+                        <div class="form-container">
+                            <h3>Agregar Cliente</h3>
+                            <form id="customerForm">
+                                <div class="form-group">
+                                    <label for="customerName">Nombre:</label>
+                                    <input type="text" id="customerName" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerEmail">Email:</label>
+                                    <input type="email" id="customerEmail" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerPhone">Teléfono:</label>
+                                    <input type="text" id="customerPhone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerIdentification">Identificación:</label>
+                                    <input type="text" id="customerIdentification" name="identification" required>
+                                </div>
+                                <button type="submit">Agregar Cliente</button>
+                            </form>
+                        </div>
+                        <div class="product-list">
+                            <h3>Lista de Clientes</h3>
+                            <table id="customersTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Email</th>
+                                        <th>Teléfono</th>
+                                        <th>Identificación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Los clientes se insertarán aquí dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="reports" class="tab-content">
+                    <h2>Reportes</h2>
+                    <div class="form-group">
+                        <label for="reportType">Tipo de Reporte:</label>
+                        <select id="reportType">
+                            <option value="sales">Reporte de Ventas</option>
+                            <option value="inventory">Reporte de Inventario</option>
+                            <option value="taxes">Reporte de Impuestos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reportStartDate">Fecha de Inicio:</label>
+                        <input type="date" id="reportStartDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="reportEndDate">Fecha de Fin:</label>
+                        <input type="date" id="reportEndDate">
+                    </div>
+                    <button id="generateReport">Generar Reporte</button>
+                    <div id="reportResult"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
