@@ -1,12 +1,14 @@
 :root {
     --background: #e0e5ec;
-    --text-color: #333;
+    --text-color: #2d3748;
     --shadow-light: #ffffff;
     --shadow-dark: #a3b1c6;
     --accent-color: #4CAF50;
     --accent-hover: #45a049;
     --error-color: #f44336;
     --success-color: #4CAF50;
+    --border-radius: 10px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 * {
@@ -16,7 +18,8 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
+    
     line-height: 1.6;
     color: var(--text-color);
     --s: 36px; /* control the size */
@@ -39,81 +42,119 @@ body {
         var(--g4),var(--g4) calc(3*var(--s)) var(--_p),
         var(--g5) calc(3*var(--s)) 0,var(--g5) 0 var(--_p) var(--c3);
     background-size: calc(6*var(--s)) calc(2*var(--_p));
-    background-color: var(--background);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
     padding: 20px;
 }
 
 .container {
     max-width: 1200px;
-    width: 100%;
-    background-color: rgba(224, 229, 236, 0.8);
-    padding: 30px;
-    border-radius: 20px;
+    margin: 0 auto;
+    background-color: rgba(224, 229, 236, 0.95);
+    padding: 20px;
+    border-radius: var(--border-radius);
     box-shadow: 
         10px 10px 20px var(--shadow-dark),
         -10px -10px 20px var(--shadow-light);
 }
 
 h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
     color: var(--text-color);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
+    text-shadow: 2px 2px 4px var(--shadow-light);
+    position: relative;
+}
+
+h1::after, h2::after, h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+    box-shadow: 
+        3px 3px 5px var(--shadow-dark),
+        -3px -3px 5px var(--shadow-light);
 }
 
 .tabs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     background-color: var(--background);
-    padding: 15px;
-    border-radius: 15px;
+    padding: 20px;
+    border-radius: var(--border-radius);
     box-shadow: 
-        inset 5px 5px 10px var(--shadow-dark),
-        inset -5px -5px 10px var(--shadow-light);
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
 }
 
 .tab {
-    padding: 12px 24px;
-    margin: 5px;
+    padding: 15px 30px;
+    margin: 8px;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 10px;
+    transition: var(--transition);
+    border-radius: 12px;
     background-color: var(--background);
     color: var(--text-color);
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     box-shadow: 
-        5px 5px 10px var(--shadow-dark),
-        -5px -5px 10px var(--shadow-light);
+        8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: all 0.6s;
+}
+
+.tab:hover::before {
+    left: 100%;
 }
 
 .tab:hover, .tab.active {
     box-shadow: 
-        inset 3px 3px 5px var(--shadow-dark),
-        inset -3px -3px 5px var(--shadow-light);
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
     color: var(--accent-color);
+    transform: translateY(2px);
 }
 
 .tab-content {
     display: none;
     background-color: var(--background);
-    padding: 30px;
-    border-radius: 15px;
+    padding: 40px;
+    border-radius: var(--border-radius);
     box-shadow: 
-        inset 5px 5px 10px var(--shadow-dark),
-        inset -5px -5px 10px var(--shadow-light);
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
+    transition: var(--transition);
 }
 
 .tab-content.active {
     display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .inventory-container {
@@ -125,11 +166,19 @@ h1, h2, h3 {
 .product-details, .product-list, .login-form, .form-container {
     flex: 1 1 300px;
     background-color: var(--background);
-    padding:  25px;
-    border-radius: 15px;
+    padding: 25px;
+    border-radius: var(--border-radius);
     box-shadow: 
-        5px 5px 10px var(--shadow-dark),
-        -5px -5px 10px var(--shadow-light);
+        8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+    transition: var(--transition);
+}
+
+.product-details:hover, .product-list:hover, .login-form:hover, .form-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        12px 12px 20px var(--shadow-dark),
+        -12px -12px 20px var(--shadow-light);
 }
 
 table {
@@ -139,70 +188,79 @@ table {
 }
 
 th, td {
-    text-align: left;
     padding: 15px;
+    text-align: left;
     background-color: var(--background);
-    border-radius: 10px;
-    box-shadow: 
-        3px 3px 5px var(--shadow-dark),
-        -3px -3px 5px var(--shadow-light);
+    transition: var(--transition);
 }
 
 th {
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     font-size: 14px;
+    color: var(--accent-color);
 }
 
 tr:hover td {
     box-shadow: 
-        inset 3px 3px 5px var(--shadow-dark),
-        inset -3px -3px 5px var(--shadow-light);
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+    transform: translateY(2px);
 }
 
-input[type="text"], input[type="number"], input[type="password"], input[type="email"], select {
+input[type="text"], input[type="number"], input[type="password"], input[type="email"], input[type="date"], select {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
+    padding: 15px;
+    margin-bottom: 25px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: var(--background);
     color: var(--text-color);
     font-size: 16px;
     box-shadow: 
-        inset 3px 3px 5px var(--shadow-dark),
-        inset -3px -3px 5px var(--shadow-light);
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+    transition: var(--transition);
+}
+
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
 }
 
 button {
     background-color: var(--accent-color);
     color: white;
-    padding: 12px 24px;
+    padding: 15px 30px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 
-        3px 3px 5px var(--shadow-dark),
-        -3px -3px 5px var(--shadow-light);
-}
-
-button:hover {
-    background-color: var(--accent-hover);
+    letter-spacing: 1.5px;
     box-shadow: 
         5px 5px 10px var(--shadow-dark),
         -5px -5px 10px var(--shadow-light);
 }
 
+button:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 
+        8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+    transform: translateY(-2px);
+}
+
 button:active {
     box-shadow: 
-        inset 3px 3px 5px var(--shadow-dark),
-        inset -3px -3px 5px var(--shadow-light);
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+    transform: translateY(2px);
 }
 
 .hidden {
@@ -211,38 +269,70 @@ button:active {
 
 #userInfo {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-weight: bold;
     font-size: 18px;
+    padding: 15px;
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: 
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+    transition: var(--transition);
+}
+
+#userInfo:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
 }
 
 .error {
     color: var(--error-color);
-    margin-top: 5px;
+    margin-top: 8px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(244, 67, 54, 0.1);
+    box-shadow: 
+        inset 3px 3px 5px rgba(244, 67, 54, 0.2),
+        inset -3px -3px 5px rgba(255, 255, 255, 0.5);
 }
 
 .success {
     color: var(--success-color);
-    margin-top: 5px;
+    margin-top: 8px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(76, 175, 80, 0.1);
+    box-shadow: 
+        inset 3px 3px 5px rgba(76, 175, 80, 0.2),
+        inset -3px -3px 5px rgba(255, 255, 255, 0.5);
 }
 
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 30px;
     }
 
     .tab {
-        flex: 1 1 calc(50% - 10px);
+        flex: 1 1 calc(50% - 16px);
     }
 
     .product-details, .product-list, .login-form, .form-container {
@@ -250,6 +340,6 @@ label {
     }
 
     th, td {
-        padding: 10px;
+        padding: 12px;
     }
 }
