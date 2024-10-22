@@ -1,4 +1,3 @@
----
 
 💼 Aplicación POS: Gestión Integral para Negocios
 
