@@ -63,14 +63,29 @@ async function loadAllData() {
     renderAvailableProductsTable();
 }
 
+// Funciones para manejar el almacenamiento local
+
+function saveData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function loadData(key) {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+}
+
 // Función para cargar productos
 async function loadProducts() {
     try {
-        const response = await fetch('http://127.0.0.1:3000/api/products');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        let products = loadData('products');
+        if (!products) {
+            // Si no hay productos en el almacenamiento local, carga datos de ejemplo
+            products = [
+                { id: 1, name: "Producto 1", price: 1000, stock: 10, category: "Categoría 1", barcode: "123456" },
+                { id: 2, name: "Producto 2", price: 2000, stock: 20, category: "Categoría 2", barcode: "234567" }
+            ];
+            saveData('products', products);
         }
-        const products = await response.json();
         console.log('Productos cargados:', products);
         renderProductTable(products);
     } catch (error) {
@@ -81,22 +96,38 @@ async function loadProducts() {
 // Función para cargar facturas
 async function loadInvoices() {
     try {
-        const response = await fetch('http://127.0.0.1:3000/api/invoices');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        let invoices = loadData('invoices');
+        if (!invoices) {
+            // Si no hay facturas en el almacenamiento local, carga datos de ejemplo
+            invoices = [
+                { id: 1, customer: "Cliente 1", total: 5000, date: "2023-05-01", status: "Pagada" },
+                { id: 2, customer: "Cliente 2", total: 7500, date: "2023-05-02", status: "Pendiente" }
+            ];
+            saveData('invoices', invoices);
         }
-        const invoices = await response.json();
         console.log('Facturas cargadas:', invoices);
         renderInvoicesTable(invoices);
     } catch (error) {
         console.error('Error al cargar facturas:', error);
     }
 }
+
 // Función para cargar clientes
 async function loadCustomers() {
-    const response = await fetch('/api/customers');
-    const customers = await response.json();
-    renderCustomersTable(customers);
+    try {
+        let customers = loadData('customers');
+        if (!customers) {
+            // Si no hay clientes en el almacenamiento local, carga datos de ejemplo
+            customers = [
+                { id: 1, name: "Cliente 1", email: "cliente1@example.com", phone: "1234567890", identification: "ID001" },
+                { id: 2, name: "Cliente 2", email: "cliente2@example.com", phone: "0987654321", identification: "ID002" }
+            ];
+            saveData('customers', customers);
+        }
+        renderCustomersTable(customers);
+    } catch (error) {
+        console.error('Error al cargar clientes:', error);
+    }
 }
 
 // Función para renderizar la tabla de productos
@@ -195,31 +226,25 @@ document.getElementById('productForm').addEventListener('submit', async function
     };
 
     const id = form.getAttribute('data-id');
-    let response;
+    let products = loadData('products') || [];
+    
     if (id) {
         // Actualizar producto existente
-        response = await fetch(`/api/products/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(productData)
-        });
+        const index = products.findIndex(p => p.id === parseInt(id));
+        if (index !== -1) {
+            products[index] = { ...products[index], ...productData };
+        }
     } else {
         // Agregar nuevo producto
-        response = await fetch('/api/products', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(productData)
-        });
+        const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+        products.push({ id: newId, ...productData });
     }
 
-    if (response.ok) {
-        await loadProducts();
-        renderAvailableProductsTable();
-        form.reset();
-        form.removeAttribute('data-id');
-    } else {
-        alert('Error al guardar el producto');
-    }
+    saveData('products', products);
+    await loadProducts();
+    renderAvailableProductsTable();
+    form.reset();
+    form.removeAttribute('data-id');
 });
 
 // Carrito de compras
@@ -367,4 +392,3 @@ document.getElementById('generateReport').addEventListener('click', async functi
 
 // Inicializar la aplicación
 loadAllData();
-
