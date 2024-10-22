@@ -1,6 +1,3 @@
-Este es un README bien estructurado y claro. Para hacerlo aún más atractivo visualmente en tu perfil de GitHub, podemos añadir algunos elementos decorativos como emojis, badges, íconos de tecnologías, y también mejorar la tipografía para facilitar la lectura. Aquí te muestro una versión mejorada:
-
-
 ---
 
 💼 Aplicación POS: Gestión Integral para Negocios
